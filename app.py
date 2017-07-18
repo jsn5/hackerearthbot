@@ -28,29 +28,39 @@ def homepage():
 def ongoingEvents(data, etype):
 	val = ''
 	for i in data['response']:
-		if etype != 'none':
+		if etype != None:
 			if etype in i['challenge_type'].lower() and 'ongoing' in i['status'].lower():
 				val+=str("<h1>"+i['title']+"</h1><p>"+i['description']+"</p><p>"+i['url']+"</p><p>"+i['date']+"</p>")
 		else:
 			if 'ongoing' in i['status'].lower():
 				val+=str("<h1>"+i['title']+"</h1><p>"+i['description']+"</p><p>"+i['url']+"</p><p>"+i['date']+"</p>")
+	if val == '':
+		val = 'No events found!'
 	return val
 
 def upcomingEvents(data, etype):
 	val = ''
 	for i in data['response']:
-		if etype != 'none':
+		if etype != None:
 			if etype in i['challenge_type'].lower() and 'upcoming' in i['status'].lower():
 				val+=str("<h1>"+i['title']+"</h1><p>"+i['description']+"</p><p>"+i['url']+"</p><p>"+i['date']+"</p>")
 		else:
 			if 'upcoming' in i['status'].lower():
 				val+=str("<h1>"+i['title']+"</h1><p>"+i['description']+"</p><p>"+i['url']+"</p><p>"+i['date']+"</p>")
+	if val == '':
+		val = 'No events found!'
 	return val
 
 def allEvents(data, etype):
 	val = ''
 	for i in data['response']:
-		val+=str("<h1>"+i['title']+"</h1><p>"+i['description']+"</p><p>"+i['url']+"</p><p>"+i['date']+"</p>")
+		if etype != None:
+			if etype in i['challenge_type'].lower():
+				val+=str("<h1>"+i['title']+"</h1><p>"+i['description']+"</p><p>"+i['url']+"</p><p>"+i['date']+"</p>")
+		else:
+			val+=str("<h1>"+i['title']+"</h1><p>"+i['description']+"</p><p>"+i['url']+"</p><p>"+i['date']+"</p>")
+	if val == '':
+		val = 'No events found!'
 	return val
 
 
