@@ -71,9 +71,5 @@ def allEvents(data, etype):
 	return val
 
 
-
-
-
-
 if __name__ == '__main__':
 	app.run(debug=True, use_reloader=True)
