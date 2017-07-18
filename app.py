@@ -6,7 +6,7 @@ link = 'https://www.hackerearth.com/chrome-extension/events/'
 @app.route('/')
 def homepage():
 	with urllib.request.urlopen(link) as url:
-	data = json.loads(url.read().decode())
+		data = json.loads(url.read().decode())
 	
 	return """
 	<h1>Hello heroku</h1>
